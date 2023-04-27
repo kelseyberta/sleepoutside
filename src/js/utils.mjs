@@ -29,10 +29,9 @@ function renderListWithTemplate(templateFn, parentElement, list, position = "aft
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
 export function getParams(param) {
   const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
-const product = urlParams.get(param);
-return product;
-
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
 }
