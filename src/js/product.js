@@ -10,16 +10,6 @@ const productId = getParams("product");
 
 const product = new ProductDetails(productId, dataSource);
 product.init();
-
-function addProductToCart(product) {
-  let cart = getLocalStorage("so-cart");
-
-  if (!cart) {
-    cart = [];
-  }
-  cart.push(product);
-  setLocalStorage("so-cart", cart);
-}
 // add to cart button event handler
 async function addToCartHandler(e) {
   const product = await dataSource.findProductById(e.target.dataset.id);
