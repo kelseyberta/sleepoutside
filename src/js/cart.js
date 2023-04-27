@@ -4,6 +4,8 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  renderTotal(cartItems);
+
 }
 
 function cartItemTemplate(item) {
@@ -26,3 +28,25 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+function calculateTotal(items) {
+  let total = 0;
+  items.forEach((item) => (total += item.FinalPrice));
+  return total;
+}
+
+function renderTotal(cartItems) {
+  if (cartItems.length) {
+    const total = calculateTotal(cartItems);
+    document.querySelector(".cart-total").innerHTML = total;
+    const htmlCartFooter = document.querySelector(".cart-footer");
+
+    if (htmlCartFooter.classList.contains("hide")) {
+      htmlCartFooter.classList.remove("hide");
+    }
+  } else {
+    if (!htmlCartFooter.classList.contains("hide")) {
+      htmlCartFooter.classList.add("hide");
+    }
+  }
+}
