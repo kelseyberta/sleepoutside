@@ -16,16 +16,23 @@ export default class ProductList {
 }
 }
 
-
+function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(templateFn);
+  // if clear is true we need to clear out the contents of the parent.
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
 
 
 function productCardTemplate(product) {
     return `<li class="product-card">
-      <a href="product_pages/index.html?product=">
-        <img src="" alt="Image of ">
-        <h3 class="card__brand"></h3>
-        <h2 class="card__name"></h2>
-        <p class="product-card__price">$</p>
+      <a href="product_pages/index.html?product=${product.Id}">
+        <img src="${product.Image}" alt="Image of ${product.Name}">
+        <h3 class="card__brand">${product.Brand.Name}</h3>
+        <h2 class="card__name">${product.Name}</h2>
+        <p class="product-card__price">$${product.FinalPrice}</p>
       </a>
     </li>`
   }
