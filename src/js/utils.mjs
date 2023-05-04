@@ -21,14 +21,31 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
-function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
-  const htmlStrings = list.map(templateFn);
-  // if clear is true we need to clear out the contents of the parent.
-  if (clear) {
-    parentElement.innerHTML = "";
+
+export function renderWithTemplate(template, parentElement, data, position = "afterbegin", callback) {
+  parentElement.insertAdjacentHTML(position, template);
+  if (callback) {
+    callback(data);
   }
-  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+async function loadTemplate(path) {
+  const html = await fetch(path);
+  const template = await html.text();
+  return template;
+
+}
+
+export async function loadHeaderFooter() {
+  const footerTemplate = await loadTemplate("../partials/footer.html");
+  const headerTemplate = await loadTemplate("../partials/header.html");
+  const header = document.querySelector("#dynamic-header");
+  const footer = document.querySelector("#dynamic-footer");
+
+  renderWithTemplate(headerTemplate, header);
+  renderWithTemplate(footerTemplate, footer);
+}
+
 export function getParams(param) {
   const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
