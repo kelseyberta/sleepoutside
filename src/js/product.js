@@ -26,7 +26,7 @@ function getLocalStorageCount() {
 const cartSubscript = (count) => `<sup class="cart-number">${count}</sup>`;
 
 document.querySelector('.cart-count').innerHTML = cartSubscript(
-  getLocalStorageCount()
+  getLocalStorageCount(product)
 );
 
 // add listener to Add to Cart button
