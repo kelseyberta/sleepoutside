@@ -1,4 +1,5 @@
 import { getParams, loadHeaderFooter, getLocalStorage } from "./utils.mjs";
+import { productCrumb } from "./Breadcrumb.mjs";
 
 import ProductDetails from "./ProductDetails.mjs";
 import ProductData from "./ProductData.mjs";
@@ -10,6 +11,8 @@ const productId = getParams("product");
 
 const productDetails = new ProductDetails(productId, dataSource);
 productDetails.init();
+
+productCrumb();
 
 // add to cart button event handler
 async function addToCartHandler(e) {

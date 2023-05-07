@@ -243,6 +243,10 @@ button {
   display: none;
 }
 
+.breadcrumb {
+  margin-left: 20px;
+}
+
 /* Homepage Product Type Grid  */
 .product-types {
   display: grid;

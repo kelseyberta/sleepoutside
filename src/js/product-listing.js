@@ -1,6 +1,7 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import { getParams, loadHeaderFooter } from "./utils.mjs";
+import { listingCrumb } from "./Breadcrumb.mjs";
 
 loadHeaderFooter();
 
@@ -10,3 +11,7 @@ const element = document.querySelector(".product-list");
 const listing = new ProductList(category, dataSource, element);
 
 listing.init();
+
+let list = await dataSource.getData(category);
+localStorage.setItem("numItems", list.length);
+listingCrumb(category);
