@@ -1,7 +1,6 @@
-import {  loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 import ShoppingCart from "./ShoppingCart.mjs";
 import { displayCounter } from "./cartCount.mjs";
-
 
 loadHeaderFooter();
 
