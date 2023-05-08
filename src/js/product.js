@@ -26,7 +26,7 @@ document.getElementById("addToCart").addEventListener("click", addToCartHandler)
 
 //Subscript Counter
 function getLocalStorageCount() {
-  const item = localStorage.getItem('so-cart');
+  const item = localStorage.getItem("so-cart");
   let itemList = [item];
   const countedItems = itemList.length;
   return countedItems;
@@ -34,6 +34,6 @@ function getLocalStorageCount() {
 
 const cartSubscript = (count) => `<sup class="cart-number">${count}</sup>`;
 
-document.querySelector('.cart-count').innerHTML = cartSubscript(
+document.querySelector(".cart-count").innerHTML = cartSubscript(
   getLocalStorageCount()
 );

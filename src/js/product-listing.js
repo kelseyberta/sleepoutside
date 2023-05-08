@@ -12,6 +12,4 @@ const listing = new ProductList(category, dataSource, element);
 
 listing.init();
 
-let list = await dataSource.getData(category);
-localStorage.setItem("numItems", list.length);
 listingCrumb(category);

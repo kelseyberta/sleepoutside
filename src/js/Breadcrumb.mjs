@@ -1,5 +1,11 @@
-export function listingCrumb(category) {
-    var numItems = localStorage.getItem("numItems");
+import ProductData from "./ProductData.mjs";
+const dataSource = new ProductData();
+
+export async function listingCrumb(category) {
+    let list = await dataSource.getData(category);
+    // localStorage.setItem("numItems", list.length);
+    // var numItems = localStorage.getItem("numItems");
+    var numItems = list.length;
     let first = category.charAt(0);
     let rest = category.substring(1);
     let capsCategory = `${first.toUpperCase()}${rest}`;
