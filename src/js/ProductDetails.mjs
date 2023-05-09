@@ -41,6 +41,8 @@ export default class ProductDetails {
         }
         cart.push(this.product);
         setLocalStorage("so-cart", cart);
+        animationIcon();
+
     };
 
     //    // add to cart button event handler
@@ -63,4 +65,18 @@ export default class ProductDetails {
         productDetailsTemplate(this.product)
     );
   }
+  }
+
+  function animationIcon() {
+    const cartStorage = getLocalStorage("so-cart").length;
+    const cart = document.querySelector(".cart");
+    if (!cart.querySelector(".cart__items")) {
+      const cartItems = document.createElement("div");
+      cartItems.classList.add("cart__items");
+      cartItems.textContent = cartStorage;
+      cart.append(cartItems);
+    } else {
+      const cartItems = cart.querySelector(".cart__items");
+      cartItems.textContent = cartStorage;
+    }
   }

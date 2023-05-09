@@ -221,18 +221,23 @@ button {
 }
 #cart-count {
   position: absolute;
-  top: 10px;
-  right: 140px;
-  display: inline-flex;
-  justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 50%;
-  background-color: orange;
-  color: black;
-  font-size: 12px;
-  text-align: left;
+  
 }
+/* Animation */
+
+.cart__items {
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+  background-color: #f0a868;
+  border-radius: 50%;
+  padding: 0.3rem;
+  color: #303030;
+  z-index: -1;
+  font-weight: bold;
+}
+
 
   display: flex;
   justify-content: center;
