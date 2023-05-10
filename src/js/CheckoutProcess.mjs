@@ -1,5 +1,23 @@
 import { getLocalStorage } from "./utils.mjs";
 
+function formDataToJSON(formElement) {
+    const formData = new FormData(formElement),
+      convertedJSON = {};
+  
+    formData.forEach(function (value, key) {
+      convertedJSON[key] = value;
+    });
+  
+    return convertedJSON;
+  }
+
+function packageItems(items) {
+    const simpleItems = items.map((item) => {
+        return {id:item.Id, price:item.FinalPrice, name:item.Name, quantity: 1};
+    })
+    return simpleItems;
+}
+
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
         this.key = key;
@@ -32,5 +50,8 @@ export default class CheckoutProcess {
         document.querySelector(this.outputSelector + "#shipping").textContent = this.shipping;
         document.querySelector(this.outputSelector + "#tax").textContent = this.tax.toFixed(2);
         document.querySelector(this.outputSelector + "#orderTotal").textContent = this.orderTotal.toFixed(2);
+    }
+    async checkout(form) {
+
     }
 }

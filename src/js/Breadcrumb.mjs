@@ -1,5 +1,5 @@
-import ProductData from "./ProductData.mjs";
-const dataSource = new ProductData();
+import ExternalServices from "./ExternalServices.mjs";
+const dataSource = new ExternalServices();
 
 export async function listingCrumb(category) {
     let list = await dataSource.getData(category);

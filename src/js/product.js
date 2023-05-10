@@ -2,11 +2,11 @@ import { getParams, loadHeaderFooter, getLocalStorage } from "./utils.mjs";
 import { productCrumb } from "./Breadcrumb.mjs";
 
 import ProductDetails from "./ProductDetails.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
 loadHeaderFooter();
 
-const dataSource = new ProductData("tents");
+const dataSource = new ExternalServices("tents");
 const productId = getParams("product");
 
 const productDetails = new ProductDetails(productId, dataSource);
