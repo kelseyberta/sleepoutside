@@ -1,5 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
+const services = new ExternalServices();
 function formDataToJSON(formElement) {
     const formData = new FormData(formElement),
       convertedJSON = {};
@@ -51,7 +53,22 @@ export default class CheckoutProcess {
         document.querySelector(this.outputSelector + "#tax").textContent = this.tax.toFixed(2);
         document.querySelector(this.outputSelector + "#orderTotal").textContent = this.orderTotal.toFixed(2);
     }
-    async checkout(form) {
-
+    async checkout() {
+        const formElement = document.forms["checkout"];
+    
+        const json = formDataToJSON(formElement);
+        // add totals, and item details
+        json.orderDate = new Date();
+        json.orderTotal = this.orderTotal;
+        json.tax = this.tax;
+        json.shipping = this.shipping;
+        json.items = packageItems(this.list);
+        console.log(json);
+        try {
+          const res = await services.checkout(json);
+          console.log(res);
+        } catch (err) {
+          console.log(err);
+        }
     }
 }
