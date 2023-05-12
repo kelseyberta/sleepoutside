@@ -8,10 +8,14 @@ checkout.init();
 
 document
   .querySelector("#zip")
-  .addEventListener("blur", checkout.calculateOrdertotal.bind(checkout));
+  .addEventListener("blur", checkout.calculateOrderTotal.bind(checkout));
 // listening for click on the button
 document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
   e.preventDefault();
-
-  checkout.checkout();
+  const form = document.forms[0];
+  const status = form.checkValidity();
+  form.reportValidity();
+  if(status) {
+    checkout.checkout();
+  }
 });
