@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="/css/style.css" />
 
-    <script src="../js/checkout.js" type="module"></script>
+    <script defer src="../js/checkout.js" type="module"></script>
   </head>
 
   <body>
@@ -19,7 +19,7 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
-        <form action="">
+        <form>
           <fieldset>
             <legend>Customer Name</legend>
             <label for="fname">First Name: </label>
@@ -47,14 +47,17 @@
             <label for="securityCode">Security Code: </label>
             <input type="text" name="securityCode" required>
           </fieldset>
-          <button type="submit">Checkout</button>
+          <fieldset>
+            <legend>Order Summary</legend>
+            <div>
+              <p>Subtotal: $<span class="order-summary" id="subtotal"></span></p>
+              <p>Shipping: $<span class="order-summary" id="shipping"></span></p>
+              <p>Tax: $<span class="order-summary" id="tax"></span></p>
+              <p>Order Total: $<span class="order-summary" id="orderTotal"></span></p>
+            </div>
+          </fieldset>
+          <button type="submit" id="checkoutSubmit">Checkout</button>
         </form>
-        <div>
-          <p>Subtotal: $<span class="order-summary" id="subtotal"></span></p>
-          <p>Shipping: $<span class="order-summary" id="shipping"></span></p>
-          <p>Tax: $<span class="order-summary" id="tax"></span></p>
-          <p>Order Total: $<span class="order-summary" id="orderTotal"></span></p>
-        </div> 
       </section>
     </main>
 

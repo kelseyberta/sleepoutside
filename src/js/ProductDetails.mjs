@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -41,6 +41,7 @@ export default class ProductDetails {
         }
         cart.push(this.product);
         setLocalStorage("so-cart", cart);
+        alertMessage("Product added to cart!")
         animationIcon();
 
     };
@@ -63,7 +64,8 @@ export default class ProductDetails {
         element.insertAdjacentHTML(
         "afterBegin",
         productDetailsTemplate(this.product)
-    );
+        );
+        console.log(this.product);
   }
   }
 

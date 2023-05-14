@@ -14,17 +14,6 @@ productDetails.init();
 
 productCrumb();
 
-// add to cart button event handler
-async function addToCartHandler(e) {
-  let product = await dataSource.findProductById(e.target.dataset.id);
-  productDetails.addToCart(product);
-}
-
-// add listener to Add to Cart button
-document
-  .getElementById("addToCart")
-  .addEventListener("click", addToCartHandler);
-
 //Subscript Counter
 function getLocalStorageCount() {
   const item = localStorage.getItem("so-cart");
