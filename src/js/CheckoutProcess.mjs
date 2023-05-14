@@ -44,17 +44,17 @@ export default class CheckoutProcess {
     calculateOrderTotal() {
         const quantity = this.list.length;
         this.shipping = 10 + 2 * (quantity - 1);
-        this.tax = (this.itemTotal * .06);
-        this.orderTotal = (this.itemTotal + this.tax + this.shipping);
+        this.tax = (this.itemTotal * .06).toFixed(2);
+        this.orderTotal = (parseFloat(this.itemTotal) + parseFloat(this.tax) + parseFloat(this.shipping)).toFixed(2);
         this.displayOrderTotals();
     }
     displayOrderTotals() {
         document.querySelector(this.outputSelector + "#shipping").textContent = this.shipping;
-        document.querySelector(this.outputSelector + "#tax").textContent = this.tax.toFixed(2);
-        document.querySelector(this.outputSelector + "#orderTotal").textContent = this.orderTotal.toFixed(2);
+        document.querySelector(this.outputSelector + "#tax").textContent = this.tax;
+        document.querySelector(this.outputSelector + "#orderTotal").textContent = this.orderTotal;
     }
     async checkout() {
-        const formElement = document.forms["checkout"];
+        const formElement = document.forms[0];
     
         const json = formDataToJSON(formElement);
         // add totals, and item details

@@ -47,14 +47,17 @@
             <label for="securityCode">Security Code: </label>
             <input type="text" name="securityCode" required>
           </fieldset>
+          <fieldset>
+            <legend>Order Summary</legend>
+            <div>
+              <p>Subtotal: $<span class="order-summary" id="subtotal"></span></p>
+              <p>Shipping: $<span class="order-summary" id="shipping"></span></p>
+              <p>Tax: $<span class="order-summary" id="tax"></span></p>
+              <p>Order Total: $<span class="order-summary" id="orderTotal"></span></p>
+            </div>
+          </fieldset>
           <button type="submit" id="checkoutSubmit">Checkout</button>
         </form>
-        <div>
-          <p>Subtotal: $<span class="order-summary" id="subtotal"></span></p>
-          <p>Shipping: $<span class="order-summary" id="shipping"></span></p>
-          <p>Tax: $<span class="order-summary" id="tax"></span></p>
-          <p>Order Total: $<span class="order-summary" id="orderTotal"></span></p>
-        </div> 
       </section>
     </main>
 
